@@ -37,7 +37,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+    origin: "https://contract-management-system-production-e9b3.up.railway.app",
     methods: ["GET", "POST"],
     credentials: true
   }
@@ -103,9 +103,9 @@ app.post('/login', (req, res) => {
     if (result.length === 0) {
       return res.status(400).json({ message: 'User not found' });
     } else {
-      const user = result[0].username;
+      const user = result[0];
       const token = jwt.sign(
-        { id: user.id, username: user.username },
+        { username: user.username },
         process.env.JWT_SECRET,
         { expiresIn: '1h' }
       )
