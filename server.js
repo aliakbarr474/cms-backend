@@ -4,8 +4,6 @@ const cors = require("cors");
 const http = require('http');
 const { Server } = require("socket.io");
 let mysql = require('mysql2');
-const { Socket } = require("dgram");
-const { urlToHttpOptions } = require("url");
 const jwt = require('jsonwebtoken');
 
 const app = express();
