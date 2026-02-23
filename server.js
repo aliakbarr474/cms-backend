@@ -7,7 +7,6 @@ let mysql = require('mysql2');
 const { Socket } = require("dgram");
 const { urlToHttpOptions } = require("url");
 const jwt = require('jsonwebtoken');
-const { desc } = require('framer-motion/client');
 
 const app = express();
 app.use(cors());
