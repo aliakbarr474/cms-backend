@@ -7,7 +7,6 @@ let mysql = require('mysql2');
 const jwt = require('jsonwebtoken');
 
 const app = express();
-const cors = require('cors');
 
 app.use(cors({
   origin: "https://contract-management-system-production-e9b3.up.railway.app",
