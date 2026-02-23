@@ -14,10 +14,11 @@ app.use(cors());
 app.use(express.json());
 
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "1234",
-  database: "project"
+  host: process.env.DB_HOST || "localhost",
+  user: process.env.DB_USER || "root",
+  password: process.env.DB_PASSWORD || "1234",
+  database: process.env.DB_NAME || "project",
+  port: process.env.DB_PORT || 3306
 });
 
 db.connect((err) => {
@@ -28,7 +29,7 @@ db.connect((err) => {
   console.log("Connected to MySQL database.");
 });
 
-PORT = 5000;
+PORT = process.env.PORT || 5000;
 
 const server = http.createServer(app);
 
@@ -1323,5 +1324,5 @@ app.get('/labor/payments/show', (req,res) => {
 });
 
 server.listen(PORT, () => {
-  console.log('Server running on 5000');
+  console.log(`Server running on ${PORT}`);
 });
