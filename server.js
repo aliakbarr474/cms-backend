@@ -12,10 +12,10 @@ const app = express();
 const cors = require('cors');
 
 app.use(cors({
-    origin: process.env.FRONTEND_URL, 
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true
+  origin: "https://contract-management-system-production-e9b3.up.railway.app",
+  credentials: true
 }));
+
 app.use(express.json());
 
 const db = mysql.createConnection({
