@@ -9,8 +9,9 @@ const jwt = require('jsonwebtoken');
 const app = express();
 
 app.use(cors({
-  origin: "https://contract-management-system-production-e9b3.up.railway.app",
-  credentials: true
+    origin: "https://contract-management-system-production-e9b3.up.railway.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
 }));
 
 app.use(express.json());
