@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 const http = require('http');
 const { Server } = require("socket.io");
 let mysql = require('mysql2');
@@ -8,11 +9,11 @@ const jwt = require('jsonwebtoken');
 
 const app = express();
 
-app.use(cors({
-    origin: "https://contract-management-system-production-e9b3.up.railway.app",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true
-}));
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 app.use(express.json());
 
@@ -38,9 +39,8 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "https://contract-management-system-production-e9b3.up.railway.app",
-    methods: ["GET", "POST"],
-    credentials: true
+    origin: "*",
+    methods: ["GET", "POST"]
   }
 });
 
